@@ -371,7 +371,7 @@ public class InscricaoDiscController extends GenericForwardComposer {
 
     public void onRelatorio() throws JRException, IOException {
         if (lbinscdisc.getItemCount() == 0 && lbinscdisc2.getItemCount() == 0) {
-            Clients.showNotification("Sem conteúdo", "warning", null, null, 3000);
+            Clients.showNotification("Sem conteï¿½do", "warning", null, null, 3000);
             return;
         }
         check(hlayout);
@@ -440,7 +440,7 @@ public class InscricaoDiscController extends GenericForwardComposer {
 
     public void onExcelExport() throws ParseException {
         if (lbinscdisc.getItemCount() == 0) {
-            Clients.showNotification("Sem conteúdo", "warning", null, null, 3000);
+            Clients.showNotification("Sem conteï¿½do", "warning", null, null, 3000);
             return;
         }
         BeanToExcel beanToExcel = new BeanToExcel();
