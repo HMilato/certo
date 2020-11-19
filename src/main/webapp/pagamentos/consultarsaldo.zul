@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:ca="client/attribute"> 
+    <zscript>
+		<![CDATA[
+			import esira.domain.Estudante;
+			Estudante estu = new Estudante();
+		]]>
+    </zscript>
+    <window id="winConsultar" apply="esira.controller.ConsultarSaldo">
+        <div >
+            <html>
+                <![CDATA[
+                <ul id="breadcrumbs-one">
+   
+                    <li><a>Home</a></li>
+                    <li><a class="current">Consultar Saldos</a></li>
+                </ul>
+                ]]>
+            </html>
+        </div>
+
+        <div width="98%" sclass="row-custimized criteriaPad button-blue" >
+            <button autodisable="self" id="addTaxa" forward="onClick=onConsultarReferencia" sclass="mybutton button blue medium" label="Consultar Referencia" />
+            <listbox  id="lbtaxa" sclass="semborda" sizedByContent="true" emptyMessage="Sem conteudo" span="true" >        
+                <listhead hflex="1" sizable="true">
+                    <listheader width="50%" hflex="max" align="center" label="Data do Pagamento"   />
+                    <listheader width="50%" hflex="max"  align="center" label="Tipo de Taxa"   />
+                    <listheader id="valorTaxa" width="50%" hflex="max"  align="center" label="Valor da Taxa "   />
+                    <listheader id="valorPago" width="50%" hflex="max"  align="center" label="Valor Pago "   />       
+                </listhead>
+                <template  name="model">
+                    <listitem value="${each}">
+                        
+                        <listcell >
+                            <!--                                <label value="${each.data}"/>-->
+                            <attribute name="onCreate"><![CDATA[
+                                esira.domain.Transacaoestudante i = (esira.domain.Transacaoestudante)self.getParent().getValue();
+                                Label l = new Label();
+                                l.setValue(new java.text.SimpleDateFormat("dd/MM/yyyy").format(i.getData()));
+                                l.setParent(self);  
+                        ]]></attribute> 
+                                
+                        </listcell>
+                      
+                        <listcell >
+                            <label value="${each.tipoTaxa.nomeTaxa}"/> 
+                        </listcell>
+                        <listcell >
+                            <label value="${each.tipoTaxa.valor}"/>
+                        </listcell>
+                        <listcell > 
+                            <label value="${each.valor}"/> 
+                        </listcell>
+
+                    </listitem>
+                    
+                </template>
+            </listbox>
+        </div>
+        <div width="25%" sclass="row-custimized criteriaPad button-blue" align="left">     
+            <listbox>        
+                <listhead >
+                    <listheader id="saldo" width="10px" hflex="min"  align="center" label="Saldo do Estudante"   />
+                </listhead>
+            </listbox>
+            <grid>
+                <rows >
+                    <row align="center">
+                        <doublebox width="100%" style="text-align: center;" id="barcodeIntbox" value="${$composer.saldoEstudante}"/>
+                    </row>
+                </rows>       
+            </grid>
+        </div>   
+        
+        <window id="winReferencia"  position="center,center" closable="true"  visible="false" border="none"
+                width="400px" apply="esira.controller.ConsultarSaldo">
+               
+            <div height="200px">
+                <html>
+                <![CDATA[
+                <ul id="breadcrumbs-one">
+                    <li><a href=" ">Referencia</a></li>
+                </ul>
+                  ]]>
+                </html>
+   
+                <hbox  style="margin-left: 10px; padding-top: 30px; " >
+                    <combobox style="display: inline-block; margin-left: 25px; font-size:10pt;  color: blue; text-align: center; " id="cbtaxa" model="${$composer.taxaModel}" width="320px" readonly="true"  >
+                        <attribute name="onAfterRender"><![CDATA[
+                                            if((self.getModel()!=null) && self.getModel().getSize()>0){
+                                               self.setSelectedIndex(0);
+                                            }                           
+                                        ]]></attribute>
+                        <comboitem label="${each}"/>
+                    </combobox>
+                </hbox>
+                    
+                <div  style=" padding-top: 20px; backgroud-color:  blue; color: blue;" align="center" >
+                   
+                    <textbox visible="false" width="320px" style="text-align: center; font-size:14pt;  color: blue; " id="txtRef" value=""/>
+                           
+                </div>
+                
+                <div  height="40px" align="center" style=" padding-top: 20px; "> 
+                    <button autodisable="self" sclass="mybutton button blue medium" id="fecharTela" label="Sair" mold="trendy" height="20px" width="320px" />
+                </div>
+   
+            </div>
+        
+        </window>
+           
+    </window>
+</zk>
