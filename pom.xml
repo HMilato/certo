@@ -12,7 +12,7 @@
         <spring.version>4.1.6.RELEASE</spring.version>
         <spring-security.version>3.2.0.M1</spring-security.version>
         <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+<!--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
     </properties>
     <packaging>war</packaging>
     <name>The eSira Project</name>
@@ -307,7 +307,7 @@
         <finalName>${project.artifactId}</finalName>
         <plugins>
             <!-- Run with Jetty-->
-            <plugin>
+      <!--      <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
                 <version>6.1.10</version>
@@ -336,7 +336,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
             <!-- Compile java -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -345,7 +345,7 @@
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <!-- Build war -->
