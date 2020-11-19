@@ -306,7 +306,7 @@
         <finalName>${project.artifactId}</finalName>
         <plugins>
             <!-- Run with Jetty-->
-            <plugin>
+      <!--      <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
                 <version>6.1.10</version>
@@ -335,7 +335,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
             <!-- Compile java -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -344,6 +344,7 @@
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <!-- Build war -->
