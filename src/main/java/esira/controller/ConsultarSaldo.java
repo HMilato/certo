@@ -146,8 +146,6 @@ public class ConsultarSaldo extends GenericForwardComposer {
 
         if (cbtaxa.getSelectedIndex() != 0) {
             
-//            par.clear();
-//            par.put("usr", usr.getIdEstudante().getCursocurrente());
 
             Taxa tax = (Taxa) cbtaxa.getSelectedItem().getValue();
            
